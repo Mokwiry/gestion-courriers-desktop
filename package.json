@@ -1,0 +1,65 @@
+{
+  "name": "gestion-courriers-barnamaj-pro",
+  "version": "3.0.0",
+  "description": "Application professionnelle moderne avec Electron",
+  "main": "public/electron.js",
+  "homepage": "./",
+  "author": "Mokwiry",
+  "license": "MIT",
+  "scripts": {
+    "dev": "electron . -- --dev",
+    "start": "electron .",
+    "build": "electron-builder --win --publish=never",
+    "build-portable": "electron-builder --win --portable",
+    "build-mac": "electron-builder --mac",
+    "build-linux": "electron-builder --linux"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "sqlite3": "^5.1.6",
+    "xlsx": "^0.18.5",
+    "pdfkit": "^0.13.0",
+    "chart.js": "^4.4.0",
+    "axios": "^1.6.0",
+    "date-fns": "^2.30.0",
+    "electron-store": "^8.1.0",
+    "uuid": "^9.0.0",
+    "dotenv": "^16.3.1"
+  },
+  "devDependencies": {
+    "electron": "^27.0.0",
+    "electron-builder": "^24.6.4"
+  },
+  "build": {
+    "appId": "com.mokwiry.gestion-pro",
+    "productName": "Gestion Pro",
+    "directories": {
+      "buildResources": "assets",
+      "output": "dist"
+    },
+    "files": [
+      "public/**/*",
+      "src/**/*",
+      "preload.js",
+      "package.json"
+    ],
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": ["x64"]
+        },
+        {
+          "target": "portable",
+          "arch": ["x64"]
+        }
+      ]
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true
+    }
+  }
+}
